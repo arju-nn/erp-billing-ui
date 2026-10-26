@@ -440,3 +440,164 @@ small.error {
     max-width: none;
   }
 }
+
+/* ---------- Stage 6 additions ---------- */
+
+.small {
+  font-size: 0.85rem;
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card-title {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.detail-grid .card {
+  margin-bottom: 16px;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  margin: 0;
+}
+
+.kv dt {
+  color: var(--muted);
+}
+
+.kv dd {
+  margin: 0;
+}
+
+.kv dd.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.kv-wide {
+  max-width: 560px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-actions .muted {
+  margin-right: auto;
+  align-self: center;
+}
+
+.field-inline {
+  min-width: 0;
+}
+
+.field-inline input {
+  width: auto;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox input {
+  width: auto;
+}
+
+.journal-entry + .journal-entry {
+  margin-top: 16px;
+}
+
+.journal-head {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.table.compact th,
+.table.compact td {
+  padding: 6px 10px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat strong {
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: #fafbfc;
+}
+
+.sub-row td {
+  background: #fbfcfd;
+  font-size: 0.88rem;
+}
+
+.btn-expand {
+  font-size: 0.95rem;
+  padding: 2px 6px;
+}
+
+@media (max-width: 720px) {
+  .detail-grid,
+  .grid-4,
+  .stat-row {
+    grid-template-columns: 1fr;
+  }
+}

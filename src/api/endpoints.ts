@@ -5,6 +5,10 @@ import type {
   InvoiceDetail,
   InvoiceListFilters,
   InvoiceSummary,
+  OutstandingReport,
+  RecordPaymentPayload,
+  RecordPaymentResult,
+  TrialBalance,
 } from './types';
 
 export const customersApi = {
@@ -20,4 +24,15 @@ export const invoicesApi = {
     api.put<InvoiceDetail>(`/invoices/${id}`, payload),
   remove: (id: number) => api.del(`/invoices/${id}`),
   issue: (id: number) => api.post<InvoiceDetail>(`/invoices/${id}/issue`),
+};
+
+export const paymentsApi = {
+  create: (payload: RecordPaymentPayload) => api.post<RecordPaymentResult>('/payments', payload),
+};
+
+export const reportsApi = {
+  outstanding: (asOf: string | undefined, signal?: AbortSignal) =>
+    api.get<OutstandingReport>('/reports/outstanding', { asOf }, signal),
+  trialBalance: (asOf: string | undefined, signal?: AbortSignal) =>
+    api.get<TrialBalance>('/reports/trial-balance', { asOf }, signal),
 };

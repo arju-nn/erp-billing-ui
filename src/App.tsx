@@ -1,10 +1,11 @@
-
 import { Navigate, Route, Routes } from 'react-router-dom';
-import ComingSoon from './components/ComingSoon';
 import Layout from './components/Layout';
 import CreateInvoicePage from './pages/CreateInvoicePage';
+import InvoiceDetailPage from './pages/InvoiceDetailPage';
 import InvoiceListPage from './pages/InvoiceListPage';
 import NotFoundPage from './pages/NotFoundPage';
+import OutstandingReportPage from './pages/OutstandingReportPage';
+import TrialBalancePage from './pages/TrialBalancePage';
 
 export default function App() {
   return (
@@ -13,10 +14,9 @@ export default function App() {
         <Route index element={<Navigate to="/invoices" replace />} />
         <Route path="invoices" element={<InvoiceListPage />} />
         <Route path="invoices/new" element={<CreateInvoicePage />} />
-        {/* Replaced in Stage 6 */}
-        <Route path="invoices/:id" element={<ComingSoon title="Invoice detail" />} />
-        <Route path="reports/outstanding" element={<ComingSoon title="Outstanding report" />} />
-        <Route path="reports/trial-balance" element={<ComingSoon title="Trial balance" />} />
+        <Route path="invoices/:id" element={<InvoiceDetailPage />} />
+        <Route path="reports/outstanding" element={<OutstandingReportPage />} />
+        <Route path="reports/trial-balance" element={<TrialBalancePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

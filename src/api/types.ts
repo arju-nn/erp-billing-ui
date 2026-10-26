@@ -79,3 +79,97 @@ export interface InvoiceListFilters {
   status?: InvoiceStatus;
   customerId?: number;
 }
+
+// ---------- payments ----------
+
+export interface RecordPaymentPayload {
+  invoiceId: number;
+  date: string;
+  amount: number;
+  method: PaymentMethod;
+  referenceNumber?: string | null;
+}
+
+export interface RecordPaymentResult {
+  payment: {
+    id: number;
+    invoiceId: number;
+    customerId: number;
+    date: string;
+    amount: string;
+    method: PaymentMethod;
+    referenceNumber: string | null;
+  };
+  invoice: {
+    id: number;
+    invoiceNumber: string;
+    status: InvoiceStatus;
+    total: string;
+    amountPaid: string;
+    balanceDue: string;
+  };
+  journalEntry: { id: number; debitAccount: string; amount: string };
+}
+
+// ---------- reports ----------
+
+export interface OutstandingInvoice {
+  id: number;
+  invoiceNumber: string;
+  invoiceDate: string;
+  dueDate: string;
+  status: string;
+  total: string;
+  amountPaid: string;
+  balanceDue: string;
+  daysOverdue: number;
+}
+
+export interface OutstandingCustomer {
+  customerId: number;
+  customerName: string;
+  customerEmail: string;
+  invoiceCount: number;
+  totalInvoiced: string;
+  totalPaid: string;
+  outstanding: string;
+  overdue: string;
+  oldestDueDate: string | null;
+  invoices: OutstandingInvoice[];
+}
+
+export interface OutstandingReport {
+  asOf: string;
+  customerCount: number;
+  totalOutstanding: string;
+  totalOverdue: string;
+  customers: OutstandingCustomer[];
+}
+
+export interface TrialBalanceRow {
+  accountId: number;
+  code: string;
+  name: string;
+  type: string;
+  totalDebit: string;
+  totalCredit: string;
+  debit: string;
+  credit: string;
+  balance: string;
+}
+
+export interface TrialBalance {
+  asOf: string | null;
+  rows: TrialBalanceRow[];
+  totals: { debit: string; credit: string; difference: string; balanced: boolean };
+  grossTotals: { debit: string; credit: string; balanced: boolean };
+  summary: {
+    assets: string;
+    liabilities: string;
+    equity: string;
+    income: string;
+    expenses: string;
+    netIncome: string;
+    equationBalanced: boolean;
+  };
+}
